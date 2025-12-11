@@ -100,6 +100,12 @@ FROM
 SGA_TARGET을 지정해서 사용하는 경우에는 인메모리 컬럼 스토어용 메모리 사이즈를 감안해서 일반 SGA 사이즈 + 인메모리 옵션 사이즈의 합 이상이어야 함.
  
 ```sql
+sqlplus / as sysdba
+
+show parameter inmemory_size
+
+-- 값이 지정이 안되어 있거나 사이즈가 작다면 다음을 실행해주세요.
+
 alter system set inmemory_size=1500M scope = spfile;
 
 shutdown immediate;
@@ -113,6 +119,8 @@ Redo Buffers               58200064 bytes
 In-Memory Area           1577058304 bytes
 Database mounted.
 Database opened.
+
+startup
 
 ```
 
